@@ -9,7 +9,10 @@ var serverCountList;
 
 console.log("Loading pg")
 const { Pool } = require('pg')
-const pool = new Pool()
+const pool = new Pool({
+	host: process.env.DATABASE_URL,
+	database: 'covid'
+})
 // the pool will emit an error on behalf of any idle clients
 // it contains if a backend error or network partition happens
 pool.on('error', (err, client) => {
