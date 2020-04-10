@@ -15,10 +15,22 @@
 
     <section id="list-university">
     	<h2>Table of Data</h2>
-            <% count.forEach(function(countRow) { %>
-			On <% countRow.time.toString() %> there were <% countRow.total.toString() %> servers, <% countRow.covid.toString() %> of which mentioned <q>coronavirus</q>
-            <% }); %>
-        </ol>
+	<table>
+		<thead>
+			<tr>
+				<th>Timestamp</th>
+				<th>Total servers online</th>
+				<th><q>Coronavirus</q> references</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% count.forEach(function(countRow) { %><tr>
+				<td><time><%= countRow.time %></time></td>
+				<td><%= countRow.total %></td>
+				<td><%= countRow.covid %></td>
+			</tr><% }); %>
+		</tbody>
+	</table>
     </section>
 </main>
 
