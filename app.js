@@ -60,6 +60,26 @@ app.get('/minecraft/graphs', function(req,res) {
     });
 });
 
+app.get('/minecraft/data', function(req,res) {
+// async/await - check out a client
+  ;(async () => {
+    const client = await pool.connect()
+    try {
+      const res = await client.query('SELECT * FROM minecraft')
+      serverCountList = res.rows
+      console.log()
+    } finally {
+      // Make sure to release the client before any error handling,
+      // just in case the error handling itself throws an error.
+      client.release()
+    }
+  })().catch(err => console.log(err.stack))
+
+    res.render('pages/minecraft/data',{
+	    count : serverCountList,
+    });
+});
+
 // about page
 // app.get('/about', function(req, res) {
 //     res.render('pages/about');
