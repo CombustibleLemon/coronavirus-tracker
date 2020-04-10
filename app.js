@@ -38,7 +38,7 @@ app.get('/', function(req, res) {
 		'Location': '/minecraft/graphs'
 	});
 	res.end();
-}
+})
 
 app.get('/minecraft/graphs', function(req,res) {
 // async/await - check out a client
