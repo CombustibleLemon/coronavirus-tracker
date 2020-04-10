@@ -14,12 +14,9 @@
     </header>
 
     <section id="list-university">
-        <h2>University buildings</h2>
-        <ol>
+    	<h2>Table of Data</h2>
             <% count.forEach(function(countRow) { %>
-                <li>
-			On <% countRow.time %> there were <% countRow.total %> servers, <% countRow.covid %> of which mentioned <q>coronavirus</q>
-                </li>
+			On <% countRow.time.toString() %> there were <% countRow.total.toString() %> servers, <% countRow.covid.toString() %> of which mentioned <q>coronavirus</q>
             <% }); %>
         </ol>
     </section>
