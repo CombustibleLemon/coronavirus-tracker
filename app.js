@@ -34,6 +34,13 @@ app.set('view engine', 'ejs');
 
 // index page
 app.get('/', function(req, res) {
+	res.writeHead(307, {
+		'Location': '/minecraft/graphs'
+	});
+	response.end();
+}
+
+app.get('/minecraft/graphs', function(req,res) {
 // async/await - check out a client
   ;(async () => {
     const client = await pool.connect()
@@ -48,7 +55,7 @@ app.get('/', function(req, res) {
     }
   })().catch(err => console.log(err.stack))
 
-    res.render('pages/index',{
+    res.render('pages/minecraft/graphs',{
 	    count : serverCountList,
     });
 });

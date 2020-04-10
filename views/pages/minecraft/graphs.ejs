@@ -1,0 +1,29 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<main>
+    <header class="jumbotron">
+        <h1>COVID-19 Gaming Statistics</h1>
+        <p>Development version</p>
+    </header>
+
+    <section id="list-university">
+        <h2>University buildings</h2>
+        <ol>
+            <% count.forEach(function(countRow) { %>
+                <li>
+			On <% countRow.time %> there were <% countRow.total %> servers, <% countRow.covid %> of which mentioned <q>coronavirus</q>
+                </li>
+            <% }); %>
+        </ol>
+    </section>
+</main>
+
+</body>
+</html>
