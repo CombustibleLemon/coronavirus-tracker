@@ -5,7 +5,7 @@ var app = express();
 var path = require('path')
 app.use(express.static(path.join(__dirname, 'public')));
 
-var buildingList;
+var serverCountList;
 
 console.log("Loading pg")
 const { Pool } = require('pg')
@@ -17,12 +17,12 @@ pool.on('error', (err, client) => {
   process.exit(-1)
 })
 
-pool.query('SELECT * FROM buildings', (err, res) => {
+pool.query('SELECT * FROM minecraft', (err, res) => {
   if (err) {
     throw err
   }
   // console.log('Building list:', res)
-  buildingList = res.rows
+  serverCountList = res.rows
 })
 
 // set the view engine to ejs
@@ -30,15 +30,15 @@ app.set('view engine', 'ejs');
 
 // use res.render to load up an ejs view file
 
-// index page 
+// index page
 app.get('/', function(req, res) {
 // async/await - check out a client
   ;(async () => {
     const client = await pool.connect()
     try {
-      const res = await client.query('SELECT * FROM buildings')
-      buildingList = res.rows
-      console.log("Retrieved %d rows of buildings", buildingList.length)
+      const res = await client.query('SELECT * FROM minecraft')
+      serverCountList = res.rows
+      console.log()
     } finally {
       // Make sure to release the client before any error handling,
       // just in case the error handling itself throws an error.
@@ -47,11 +47,11 @@ app.get('/', function(req, res) {
   })().catch(err => console.log(err.stack))
 
     res.render('pages/index',{
-      buildings : buildingList
+	    count : serverCountList,
     });
 });
 
-// about page 
+// about page
 // app.get('/about', function(req, res) {
 //     res.render('pages/about');
 // });

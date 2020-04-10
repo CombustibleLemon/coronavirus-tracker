@@ -1,0 +1,117 @@
+:root {
+    --color-bg-primary-light: #ffffff;
+    --color-bg-primary-dark: #121212;
+
+    --color-bg-secondary-light: #eeeeee;
+    --color-bg-secondary-dark: #000000;
+
+    --color-text-primary-light: #000000;
+    --color-text-primary-dark: #ffffff;
+
+    --color-accent-primary-light: #0f9be0;
+    --color-accent-primary-dark: #80d9ff;
+
+    --color-accent-secondary-light: #8354f2;
+    --color-accent-secondary-dark: #9c75f5;
+
+    --color-accent-tertiary-light: #d200a4;
+    --color-accent-tertiary-dark: #f254c3;
+
+    --color-bg-primary: var(--color-bg-primary-light);
+    --color-bg-secondary: var(--color-bg-secondary-light);
+    --color-text-primary: var(--color-text-primary-light);
+    --color-accent-primary: var(--color-accent-primary-light);
+    --color-accent-secondary: var(--color-accent-secondary-light);
+    --color-accent-tertiary: var(--color-accent-tertiary-light);
+}
+  
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg-primary: var(--color-bg-primary-dark);
+        --color-bg-secondary: var(--color-bg-secondary-dark);
+        --color-text-primary: var(--color-text-primary-dark);
+        --color-accent-secondary: var(--color-accent-secondary-dark);
+        --color-accent-tertiary: var(--color-accent-tertiary-dark);
+    }
+}
+  
+body {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    font-variant-ligatures: discretionary-ligatures;
+}
+
+main {
+    max-width: 1200px;
+    padding: 1em;
+    background-color: var(--color-bg-primary);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main > header > h1 {
+    font-size: 2em;
+}
+
+a {
+    color: var(--color-accent-primary);
+}
+
+a.footnote-ref,  a.footnote-ref:visited,
+a.footnote-back, a.footnote-back:visited {
+    color: var(--color-accent-tertiary)
+}
+
+a:visited {
+    color: var(--color-accent-secondary);
+}
+
+figure {
+    margin-top: 0;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+@media (min-width: 750px) {
+    main{
+        padding: 3em;
+    }
+    figure {
+        margin: unset;
+        margin-left: 1em;
+        margin-bottom: 1em;
+        float: right;
+        max-width: 45%;
+        max-height: 50%;
+        clear: both;
+    }
+}
+
+blockquote > footer > cite {
+    font-style: unset;
+}
+
+figure > img {
+    width: 100%;
+}
+
+/*
+caption {
+    width: 100%;
+}
+*/
+
+td {
+    vertical-align: top;
+}
+
+.tableparent {
+    overflow-x: auto;
+}
+
+.tableparent > footer {
+    font-size: small;
+    margin-bottom: 1em;
+}
