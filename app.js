@@ -37,7 +37,7 @@ app.get('/', function(req, res) {
 	res.writeHead(307, {
 		'Location': '/minecraft/graphs'
 	});
-	response.end();
+	res.end();
 }
 
 app.get('/minecraft/graphs', function(req,res) {
